@@ -62,7 +62,6 @@ public class GetBestTweetServiceImpl implements GetBestTweetService {
                         QueryResult result = null;
                         try {
                             result = twitter.search(query);
-                            Log.e("result", result.toString());
                         } catch (TwitterException e) {
                             // log the exception in some framework like Crashlytics or something
                             e.printStackTrace();

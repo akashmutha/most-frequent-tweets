@@ -49,14 +49,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showProgressBar(){
-//        if(progressBar != null){
-        Log.e("progress", "show is called");
+        if(progressBar != null){
             progressBar.setVisibility(View.VISIBLE);
-//        }
+        }
     }
 
     public void hideProgressBar(){
-        Log.e("progres", "hide is called");
         if(progressBar != null)
             progressBar.setVisibility(View.INVISIBLE);
     }

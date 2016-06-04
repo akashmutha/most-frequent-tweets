@@ -86,13 +86,13 @@ public class MainActivityFragment extends Fragment {
         super.onDestroy();
     }
 
-    private void fetchAndDisplayTweets(final boolean shouldShowPreviousContent){
+    private void fetchAndDisplayTweets(final boolean shouldshowCachedContent){
         if(getBestTweetService == null)
             getBestTweetService = new GetBestTweetServiceImpl();
 
         // show the previous tweets Untill we get the latest tweets and then refresh
-        if(shouldShowPreviousContent)
-            showPreviousContent();
+        if(shouldshowCachedContent)
+            showCachedContent();
 
         getBestTweetService.getBestTweetService(new BestTweetRequest("ClearTax", 100))
                 .subscribeOn(Schedulers.newThread())
@@ -184,7 +184,7 @@ public class MainActivityFragment extends Fragment {
         }
     }
 
-    private void showPreviousContent(){
+    private void showCachedContent(){
         Set<String > mostFrequentStringSet = new HashSet<>();
         mostFrequentStringSet = sharedPreferences.getStringSet("most_frequent_tweet", null);
         if(mostFrequentStringSet != null){
@@ -198,7 +198,6 @@ public class MainActivityFragment extends Fragment {
             tweetsAdapter.notifyDataSetChanged();
         } else{
             if(getActivity() != null && getActivity() instanceof MainActivity) {
-                Log.e("showing", "progressbar");
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
